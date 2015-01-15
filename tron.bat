@@ -1042,7 +1042,20 @@ echo %CUR_DATE% %TIME%    Launch job 'Malwarebytes Anti-Malware', continuing oth
 echo %CUR_DATE% %TIME%    Launch job 'Malwarebytes Anti-Malware', continuing other jobs...
 pushd mbam
 :: Install MBAM & remove the desktop icon
-if /i %DRY_RUN%==no ( 
+if /i %DRY_RUN%==no (
+	if "%SAFE_MODE%"=="no" (
+		if /i '%PROCESSOR_ARCHITECTURE%'=='x86' (
+			"AutoHotKey32.exe" "StartMBAMRegSession.ahk"
+		) else (
+			"AutoHotKey64.exe" "StartMBAMRegSession.ahk"
+		)
+	) else (
+		if /i '%PROCESSOR_ARCHITECTURE%'=='x86' (
+			"AutoHotKey32.exe" "StartMBAMSafeMode.ahk"
+		) else (
+			"AutoHotKey64.exe" "StartMBAMSafeMode.ahk"
+		)
+	)
 	"Malwarebytes Anti-Malware v2.0.4.1028.exe" /verysilent
 	::"Malwarebytes Anti-Malware v1.75.0.1300.exe" /SP- /VERYSILENT /NORESTART /SUPPRESSMSGBOXES /NOCANCEL
 	if exist "%PUBLIC%\Desktop\Malwarebytes Anti-Malware.lnk" del "%PUBLIC%\Desktop\Malwarebytes Anti-Malware.lnk"
