@@ -1043,32 +1043,43 @@ echo %CUR_DATE% %TIME%    Launch job 'Malwarebytes Anti-Malware', continuing oth
 pushd mbam
 :: Install MBAM & remove the desktop icon
 if /i %DRY_RUN%==no (
-	if "%SAFE_MODE%"=="no" (
-		if /i '%PROCESSOR_ARCHITECTURE%'=='x86' (
-			"AutoHotKey32.exe" "StartMBAMRegSession.ahk"
-		) else (
-			"AutoHotKey64.exe" "StartMBAMRegSession.ahk"
-		)
-	) else (
-		if /i '%PROCESSOR_ARCHITECTURE%'=='x86' (
-			"AutoHotKey32.exe" "StartMBAMSafeMode.ahk"
-		) else (
-			"AutoHotKey64.exe" "StartMBAMSafeMode.ahk"
-		)
-	)
 	"Malwarebytes Anti-Malware v2.0.4.1028.exe" /verysilent
 	::"Malwarebytes Anti-Malware v1.75.0.1300.exe" /SP- /VERYSILENT /NORESTART /SUPPRESSMSGBOXES /NOCANCEL
 	if exist "%PUBLIC%\Desktop\Malwarebytes Anti-Malware.lnk" del "%PUBLIC%\Desktop\Malwarebytes Anti-Malware.lnk"
 	if exist "%USERPROFILE%\Desktop\Malwarebytes Anti-Malware.lnk" del "%USERPROFILE%\Desktop\Malwarebytes Anti-Malware.lnk"
 	if exist "%ALLUSERSPROFILE%\Desktop\Malwarebytes Anti-Malware.lnk" del "%ALLUSERSPROFILE%\Desktop\Malwarebytes Anti-Malware.lnk"
-
 	:: Scan for and launch appropriate architecture version
 	if exist "%ProgramFiles(x86)%\Malwarebytes Anti-Malware" (
+		copy "StartMBAMRegSession.ahk"  "%ProgramFiles(x86)%\Malwarebytes Anti-Malware"
+		copy "StartMBAMSafeMode.ahk"  "%ProgramFiles(x86)%\Malwarebytes Anti-Malware"
+		copy "AutoHotKey.exe"  "%ProgramFiles%\Malwarebytes Anti-Malware"
 		pushd "%ProgramFiles(x86)%\Malwarebytes Anti-Malware"
 	) else (
+		copy "StartMBAMRegSession.ahk"  "%ProgramFiles%\Malwarebytes Anti-Malware"
+		copy "StartMBAMSafeMode.ahk"  "%ProgramFiles%\Malwarebytes Anti-Malware"
+		copy "AutoHotKey.exe"  "%ProgramFiles%\Malwarebytes Anti-Malware"
 		pushd "%ProgramFiles%\Malwarebytes Anti-Malware"
 		)
-	start "" "mbam.exe"
+	:: Launch AHK Script
+	if "%SAFE_MODE%"=="no" (
+		::if /i '%PROCESSOR_ARCHITECTURE%'=='x86' (
+			::"AutoHotKey32.exe" "StartMBAMRegSession.ahk"
+			"AutoHotKey.exe" "StartMBAMRegSession.ahk"
+		::) else (
+		::	"AutoHotKey64.exe" "StartMBAMRegSession.ahk"
+		::)
+	) else (
+		::if /i '%PROCESSOR_ARCHITECTURE%'=='x86' (
+			::"AutoHotKey32.exe" "StartMBAMSafeMode.ahk"
+			"AutoHotKey.exe" "StartMBAMSafeMode.ahk"
+		::) else (
+		::	"AutoHotKey64.exe" "StartMBAMSafeMode.ahk"
+		::)
+	)
+	if exist "StartMBAMSafeMode.ahk" del "StartMBAMSafeMode.ahk"
+	if exist "StartMBAMRegSession.ahk" del "StartMBAMRegSession.ahk"
+	if exist "AutoHotKey.exe" del "AutoHotKey.exe"
+	::start "" "mbam.exe"
 	popd
 )
 
