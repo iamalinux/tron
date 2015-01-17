@@ -1062,25 +1062,14 @@ if /i %DRY_RUN%==no (
 		)
 	:: Launch AHK Script
 	if "%SAFE_MODE%"=="no" (
-		::if /i '%PROCESSOR_ARCHITECTURE%'=='x86' (
-			::"AutoHotKey32.exe" "StartMBAMRegSession.ahk"
-			"AutoHotKey.exe" "StartMBAMRegSession.ahk"
-		::) else (
-		::	"AutoHotKey64.exe" "StartMBAMRegSession.ahk"
-		::)
+		"AutoHotKey.exe" "StartMBAMRegSession.ahk"
 	) else (
-		::if /i '%PROCESSOR_ARCHITECTURE%'=='x86' (
-			::"AutoHotKey32.exe" "StartMBAMSafeMode.ahk"
-			"AutoHotKey.exe" "StartMBAMSafeMode.ahk"
-		::) else (
-		::	"AutoHotKey64.exe" "StartMBAMSafeMode.ahk"
-		::)
+		"AutoHotKey.exe" "StartMBAMSafeMode.ahk"
 	)
 	if exist "StartMBAMSafeMode.ahk" del "StartMBAMSafeMode.ahk"
 	if exist "StartMBAMRegSession.ahk" del "StartMBAMRegSession.ahk"
 	if exist "AutoHotKey.exe" del "AutoHotKey.exe"
-	::start "" "mbam.exe"
-	popd
+	::popd :: This line is redundant.
 )
 
 
