@@ -1,4 +1,4 @@
-; Run this before MBAM so that MBAM is the active window.
+; Run this script from the install directory.
 coord=relative
 Run %A_ScriptDir%\mbam.exe
 sleep, 10000 ; Wait 10 seconds for program load
