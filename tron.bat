@@ -1048,11 +1048,11 @@ if /i %DRY_RUN%==no (
 	if exist "%PUBLIC%\Desktop\Malwarebytes Anti-Malware.lnk" del "%PUBLIC%\Desktop\Malwarebytes Anti-Malware.lnk"
 	if exist "%USERPROFILE%\Desktop\Malwarebytes Anti-Malware.lnk" del "%USERPROFILE%\Desktop\Malwarebytes Anti-Malware.lnk"
 	if exist "%ALLUSERSPROFILE%\Desktop\Malwarebytes Anti-Malware.lnk" del "%ALLUSERSPROFILE%\Desktop\Malwarebytes Anti-Malware.lnk"
-	:: Scan for and launch appropriate architecture version
+	:: Scan for and launch appropriate architecture version and copy script
 	if exist "%ProgramFiles(x86)%\Malwarebytes Anti-Malware" (
 		copy "StartMBAMRegSession.ahk"  "%ProgramFiles(x86)%\Malwarebytes Anti-Malware"
 		copy "StartMBAMSafeMode.ahk"  "%ProgramFiles(x86)%\Malwarebytes Anti-Malware"
-		copy "AutoHotKey.exe"  "%ProgramFiles%\Malwarebytes Anti-Malware"
+		copy "AutoHotKey.exe"  "%ProgramFiles(x86)%\Malwarebytes Anti-Malware"
 		pushd "%ProgramFiles(x86)%\Malwarebytes Anti-Malware"
 	) else (
 		copy "StartMBAMRegSession.ahk"  "%ProgramFiles%\Malwarebytes Anti-Malware"
@@ -1069,7 +1069,7 @@ if /i %DRY_RUN%==no (
 	if exist "StartMBAMSafeMode.ahk" del "StartMBAMSafeMode.ahk"
 	if exist "StartMBAMRegSession.ahk" del "StartMBAMRegSession.ahk"
 	if exist "AutoHotKey.exe" del "AutoHotKey.exe"
-	::popd :: This line is redundant.
+	popd
 )
 
 
