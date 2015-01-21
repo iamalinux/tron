@@ -1,10 +1,10 @@
-Fork Description: Addition to start mbam, scan, and update through AHK click actions.
+Fork Description: Start mbam, scan, and update through AHK click actions.
 
 
-Please read the bat script from lines 1052-1072 to understand what needs to be done before testing these files.
+Please read this and the bat script from lines 1040-1073 to understand what needs to be done before testing these files.
 
 
-The ahk scripts are in Linux/Mac format and must be converted to Windows format before use.  This can be done with Notepad++, edit, EOL Conversion, Windows.  The ahk files must be in the correct directory to work.  The 32bit AutoHotKey must be downloaded from http://ahkscript.org/download/ and unzipped with the scripts as well.  See step 2 below for a visual description of what needs to be done.
+The ahk scripts are in Linux/Mac format and must be converted to Windows format before use.  This can be done with Notepad++, edit, EOL Conversion, Windows, file, save.  The ahk files must be in the correct directory to work.  The 32bit AutoHotKey must be downloaded from http://ahkscript.org/download/ahk-u32.zip and unzipped with the scripts as well.  See step 2 below for a visual description of what needs to be done.
 
 
 AHK scripts are tested and work.  The Bat file needs testing, but the individual commands have been tested in a command prompt and work.
@@ -37,6 +37,7 @@ Setup
 
 4. Test
 
+END FORK NOTES
 
 | NAME       | Tron, an automated PC cleanup script                                                        |
 | :--------- | :------------------------------------------------------------------------------------------ |
