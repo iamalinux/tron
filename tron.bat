@@ -1066,8 +1066,8 @@ if /i %DRY_RUN%==no (
 	) else (
 		"AutoHotKey.exe" "StartMBAMSafeMode.ahk"
 	)
-	::Wait 2 minutes.  XP safe command.
-	ping 192.0.2.2 -n 1 -w 120000 > nul
+	::Wait 200 seconds.  XP safe command.
+	ping 192.0.2.2 -n 200 -w 1000 > nul
 	:: Clean up
 	if exist "StartMBAMSafeMode.ahk" del "StartMBAMSafeMode.ahk"
 	if exist "StartMBAMRegSession.ahk" del "StartMBAMRegSession.ahk"
