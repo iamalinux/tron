@@ -1,6 +1,7 @@
 ; Run this script from the install directory.
 coord=relative
 Run %A_ScriptDir%\mbam.exe
+MouseMove, 1, 1 ; Exit screensaver
 sleep, 10000 ; Wait 10 seconds for program load
 click 450, 510 ; scan now button
 sleep, 30000 ; wait for update check
