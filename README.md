@@ -1,18 +1,13 @@
 Fork Description: Start mbam, scan, and update through AHK click actions.
 
 
-Status: Complete!
+Status: Debugging
 
 
 Please read this and the bat script from lines 1040-1076 to understand what needs to be done before testing these files.
 
 
 The ahk scripts are in Linux/Mac format and must be converted to Windows format before use.  This can be done with Notepad++, edit, EOL Conversion, Windows, file, save.  The ahk files must be in the correct directory to work.  The 32bit AutoHotKey must be downloaded from http://ahkscript.org/download/ahk-u32.zip and unzipped with the scripts as well.  See step 2 below for a visual description of what needs to be done.
-
-
-These scripts are tested and work with XP and Windows 8 in regular sessions and safe mode.  The Bat file could always use more testing.
-
-
 
 Setup
 
@@ -40,6 +35,12 @@ Setup
 
 4. Test
 
+
+I could use help testing this.  It works flawlessly on these system in these states:
+Windows XP Safe Mode
+Windows 7 Safe Mode
+Windows 8 Safe Mode
+Windows 8 Regular Session
 
 END FORK NOTES
 
