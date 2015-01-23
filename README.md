@@ -37,10 +37,15 @@ Setup
 
 
 I could use help testing this.  It works flawlessly on these system in these states:
+
 Windows XP Safe Mode
+
 Windows 7 Safe Mode
+
 Windows 8 Safe Mode
+
 Windows 8 Regular Session
+
 
 END FORK NOTES
 
